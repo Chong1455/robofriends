@@ -1,12 +1,13 @@
 import React from 'react';
 
-const Card = ({ name, email, id }) => {
+const Card = ({ id, name, slug, race, alignment }) => {
 	return (
-		<div className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
-			<img alt='robots' src={`https://robohash.org/set_any/bgset_any/${id}?size=200x200`} />
+		<div className='tc bg-light-blue dib br3 pa3 ma2 grow bw2 shadow-5'>
+			<img alt='superhero' src={`https://akabab.github.io/superhero-api/api/images/sm/${slug}.jpg`} />
 			<div>
-				<h2>{name}</h2>
-				<p>{email}</p>
+				<h3>{name}</h3>
+				<p>Race: {race || '-'}</p>
+				<p>Alignment: {alignment}</p>
 			</div>
 		</div>
 	);

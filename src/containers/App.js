@@ -9,15 +9,15 @@ class App extends Component {
 	constructor() {
 		super()
 		this.state = {
-			robots: [],
+			heroes: [],
 			searchfield: ''
 		}
 	}
 
 	componentDidMount() {
-		fetch('https://jsonplaceholder.typicode.com/users')
+		fetch('https://akabab.github.io/superhero-api/api/all.json')
 			.then(response => response.json())
-			.then(users => this.setState({ robots: users }));
+			.then(users => this.setState({ heroes: users }));
 	}
 
 	onSearchChange = (event) => {
@@ -25,21 +25,22 @@ class App extends Component {
 	}
 
 	render() {
-		const { robots, searchfield } = this.state;
-		const filteredRobots = robots.filter(robot => {
-			return robot.name.toLowerCase().includes(searchfield.toLowerCase());
+		const { heroes, searchfield } = this.state;
+		const filteredHeroes = heroes.filter(hero => {
+			return hero.name.toLowerCase().includes(searchfield.toLowerCase());
 		})
-		return !robots.length ?
+		return !heroes.length ?
 		<h1>Loading</h1> :
 		(
 			<div className='tc'>
-				<h1 className='f1 pa4'>Robo Invaders</h1>
+				<h1 className='f1 pa4'>Superheroes & Villains</h1>
 				<SearchBox searchChange={this.onSearchChange} />
 				<Scroll>
 					<ErrorBoundary>
-						<CardList robots={filteredRobots} />
+						<CardList heroes={filteredHeroes} />
 					</ErrorBoundary>
 				</Scroll>
+				<h2>"With great power, comes great responsibility." – Spiderman</h2>
 			</div>
 		);
 	}
