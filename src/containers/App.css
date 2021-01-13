@@ -11,6 +11,8 @@ h1 {
 	font-family:  'Team 401 Regular';
 	font-weight: 10;
 	color:#505100;
+	display: flex;
+	justify-content: center;
 }
 
 h2 {
